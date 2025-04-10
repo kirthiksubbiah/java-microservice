@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           dockerImage = docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}")
-          docker.withRegistry('https://index.docker.io/v1/', 'Docker-hub-credentials') {
+          docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
             dockerImage.push()
             dockerImage.push('latest')
           }
